@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-28 11:44:10
- * @LastEditTime: 2020-07-06 10:28:02
+ * @LastEditTime: 2020-07-06 12:13:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-backstage\src\views\home\Home.vue
@@ -114,7 +114,9 @@
         </el-submenu>
       </el-menu>
     </el-aside>
-    <el-main class='main'>Main</el-main>
+    <el-main class='main'>
+      <router-view></router-view>
+    </el-main>
   </el-container>
 </el-container>
 </template>

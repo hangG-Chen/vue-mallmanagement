@@ -1,10 +1,10 @@
 <!--
  * @Author: your name
- * @Date: 2020-07-06 11:54:30
- * @LastEditTime: 2020-07-06 12:06:12
- * @LastEditors: Please set LastEditors
+ * @Date: 2020-07-06 12:01:28
+ * @LastEditTime: 2020-07-06 12:15:38
+ * @LastEditors: your name
  * @Description: In User Settings Edit
- * @FilePath: \vue-backstage\src\components\user\userlist.vue
+ * @FilePath: \vue-backstage\src\components\users\users.vue
 --> 
 <template>
   <div>
@@ -14,11 +14,14 @@
 
 <script>
   export default {
-    name: 'userlist',
+    name: 'users',
     data() {
       return {
         userdata: {}
       }
+    },
+    created() {
+      
     }
   }
 </script>
