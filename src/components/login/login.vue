@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-24 19:27:36
- * @LastEditTime: 2020-07-06 10:29:05
+ * @LastEditTime: 2020-07-06 11:40:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-backstage\src\components\login\login.vue
@@ -50,8 +50,9 @@ export default {
         // 登陆成功
         // 保存token值
         localStorage.setItem('token', data.token)
-        // 跳转Home
+        // 提示信息
         this.$message.success('登陆成功')
+        // 跳转Home
         this.$router.push('/home')
       } else {
         // 登录失败
