@@ -1,27 +1,47 @@
+/*
+ * @Author: your name
+ * @Date: 2020-06-24 16:08:15
+ * @LastEditTime: 2020-07-06 10:29:31
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \vue-backstage\src\router\index.js
+ */
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Router from 'vue-router'
+import Login from '@/components/login/login.vue'
+import Home from '@/views/home/Home.vue'
 
-Vue.use(VueRouter)
+/**
+ * 重写路由的push方法
+ */
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location, onResolve, onReject) {
+  if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+  return originalPush.call(this, location).catch(err => err)
+}
 
-  const routes = [
+Vue.use(Router)
+
+const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    redirect: '/login'
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: Home
   }
 ]
 
-const router = new VueRouter({
-  routes
+const router = new Router({
+  routes,
+  mode: 'history'
 })
 
 export default router
