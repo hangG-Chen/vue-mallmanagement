@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-24 19:27:36
- * @LastEditTime: 2020-07-06 11:40:12
+ * @LastEditTime: 2020-07-09 13:28:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-backstage\src\components\login\login.vue
@@ -11,11 +11,12 @@
   <el-form class="login-form" label-position="top" label-width="80px" :model="formdata">
     <h2> 用户登录 </h2>
     <el-form-item label="账号">
-      <el-input v-model="formdata.username"></el-input>
+      <el-input v-model="formdata.username"> </el-input>
     </el-form-item>
     <el-form-item label="密码">
       <el-input v-model="formdata.password"> </el-input>
     </el-form-item>
+    <el-checkbox v-model="keepLogin">记住登录状态</el-checkbox>
     <el-button type="primary" class="login-btn" @click.prevent="handleLogin()"> 登录 </el-button>
   </el-form>
 </div>
@@ -28,13 +29,13 @@ export default {
     return {
       formdata: {
         username: '',
-        password: ''
-      }
+        password: '',
+      },
+      keepLogin: false
     }
   },
   methods: {
     async handleLogin() {
-
       // es7 async await
       const res = await this.$http.post("login", this.formdata)
       console.log(res);
@@ -50,14 +51,16 @@ export default {
         // 登陆成功
         // 保存token值
         localStorage.setItem('token', data.token)
+        // 保存登录状态值
+        localStorage.setItem('keepLogin', this.keepLogin)
         // 提示信息
         this.$message.success('登陆成功')
         // 跳转Home
-        this.$router.push('/home')
+        this.$router.push('/')
       } else {
         // 登录失败
         // 提示信息
-        this.$message.warning(meta.msg);
+        this.$message.warning(meta.msg)
       }
     }
 

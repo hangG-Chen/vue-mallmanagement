@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-28 11:44:10
- * @LastEditTime: 2020-07-06 12:13:14
+ * @LastEditTime: 2020-07-24 12:31:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-backstage\src\views\home\Home.vue
@@ -25,7 +25,8 @@
     <el-aside class='aside' width='220px'>
       <el-menu default-active="2" 
       class="el-menu-vertical-demo" 
-      :unique-opened="true">
+      :unique-opened="true"
+      :router="true">
 
         <!-- 1 -->
         <el-submenu index="1">
@@ -33,7 +34,7 @@
             <i class="el-icon-location"></i>
             <span>用户管理</span>
           </template>
-          <el-menu-item index="1-1">
+          <el-menu-item index="users">
             <template slot="title">
               <i class="el-icon-menu"></i>
               <span>用户列表</span>
@@ -178,5 +179,9 @@ export default {
 .login-out {
   line-height: 60px;
   text-decoration: none;
+}
+
+.main {
+  height: 100%;
 }
 </style>
