@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-06-24 16:08:15
- * @LastEditTime: 2020-07-28 11:01:09
+ * @LastEditTime: 2020-07-28 11:02:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-backstage\src\router\index.js
@@ -46,7 +46,8 @@ const routes = [
       path: 'users',
       name: 'Users',
       component: Users
-    },{
+    },
+    {
       path: 'rights',
       name: 'Rights',
       component: Rights
