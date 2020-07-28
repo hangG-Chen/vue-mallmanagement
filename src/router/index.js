@@ -1,7 +1,11 @@
 /*
  * @Author: your name
  * @Date: 2020-06-24 16:08:15
- * @LastEditTime: 2020-07-28 11:02:20
+<<<<<<< HEAD
+ * @LastEditTime: 2020-07-28 11:10:27
+=======
+ * @LastEditTime: 2020-07-28 11:07:51
+>>>>>>> dev-user
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-backstage\src\router\index.js
@@ -11,7 +15,7 @@ import Router from 'vue-router'
 import Login from '@/components/login/Login.vue'
 import Home from '@/components/home/Home.vue'
 import Users from '@/components/users/Users.vue'
-
+import Rights from '@/components/rights/Rights.vue'
 
 /**
  * 重写路由的push方法
@@ -35,7 +39,7 @@ const routes = [
 //   },
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     component: Login
   },
   {
@@ -44,12 +48,12 @@ const routes = [
     component: Home,
     children: [{
       path: 'users',
-      name: 'Users',
+      name: 'users',
       component: Users
     },
     {
       path: 'rights',
-      name: 'Rights',
+      name: 'rights',
       component: Rights
     }]
   }

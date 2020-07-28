@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-06 12:01:28
- * @LastEditTime: 2020-07-28 10:45:54
+ * @LastEditTime: 2020-07-28 11:56:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-backstage\src\components\users\users.vue
@@ -9,11 +9,7 @@
 <template>
 <el-card class="box-card">
   <!-- 面包屑 -->
-  <el-breadcrumb separator="/">
-    <el-breadcrumb-item>首页</el-breadcrumb-item>
-    <el-breadcrumb-item>用户管理</el-breadcrumb-item>
-    <el-breadcrumb-item>用户列表</el-breadcrumb-item>
-  </el-breadcrumb>
+  <my-bread level1='用户管理' level2='用户列表'></my-bread>
   <!-- 搜索 -->
   <el-row>
     <el-col>
