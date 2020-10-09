@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-28 11:44:10
- * @LastEditTime: 2020-07-28 11:11:33
+ * @LastEditTime: 2020-09-02 13:31:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-backstage\src\views\home\Home.vue
@@ -13,10 +13,10 @@
       <el-col :span="4">
         <img src="@/assets/img/home_icon.png" alt="无法显示图片">
       </el-col>
-      <el-col :span="18" class="title">
+      <el-col :span="16" class="title">
         <span>电商后台管理系统</span>
       </el-col>
-      <el-col :span="2">
+      <el-col :span="4">
         <a @click="handleSignout()" class="login-out">退出</a>
       </el-col>
     </el-row>
@@ -29,25 +29,25 @@
       :router="true">
 
         <!-- 1 -->
-        <el-submenu index="1">
+        <el-submenu  v-for="item1 in this.menus" :key='item1.id' :index='item1.path'>
           <template slot="title">
             <i class="el-icon-location"></i>
-            <span>用户管理</span>
+            <span>{{item1.authName}}</span>
           </template>
-          <el-menu-item index="users">
+          <el-menu-item v-for="item2 in item1.children" :key="item2.id" :index='item2.path'>
             <template slot="title">
               <i class="el-icon-menu"></i>
-              <span>用户列表</span>
+              <span>{{item2.authName}}</span>
             </template>
           </el-menu-item>
         </el-submenu>
         <!-- 2 -->
-        <el-submenu index="2">
+        <!-- <el-submenu index="2">
           <template slot="title">
             <i class="el-icon-location"></i>
             <span>权限管理</span>
           </template>
-          <el-menu-item index="2-1">
+          <el-menu-item index="role">
             <template slot="title">
               <i class="el-icon-menu"></i>
               <span>角色列表</span>
@@ -60,7 +60,7 @@
             </template>
           </el-menu-item>
         </el-submenu>
-        <!-- 3 -->
+
         <el-submenu index="3">
           <template slot="title">
             <i class="el-icon-location"></i>
@@ -85,7 +85,7 @@
             </template>
           </el-menu-item>
         </el-submenu>
-        <!-- 4 -->
+
         <el-submenu index="4">
           <template slot="title">
             <i class="el-icon-location"></i>
@@ -99,7 +99,6 @@
 
           </el-menu-item>
         </el-submenu>
-        <!-- 5 -->
         <el-submenu index="5">
           <template slot="title">
             <i class="el-icon-location"></i>
@@ -112,7 +111,7 @@
               </template>
             </el-menu-item>
           
-        </el-submenu>
+        </el-submenu> -->
       </el-menu>
     </el-aside>
     <el-main class='main'>
@@ -125,13 +124,24 @@
 <script>
 export default {
   name: 'Home',
-  beforeCreate() {
-    const token = localStorage.getItem('token')
-    if(!token) {
-      this.$router.push({name:"login"})
+  data() {
+    return {
+      menus: {}
     }
   },
+  beforeCreate() {
+    
+  },
+  created() {
+    this.getMenus()
+  },
   methods: {
+    // 获取目录 
+    async getMenus() {
+      const res = await this.$http.get('menus')
+      this.menus = res.data.data
+      console.log(this.menus);
+    },
     handleSignout() {
       // 清除token
       localStorage.clear()

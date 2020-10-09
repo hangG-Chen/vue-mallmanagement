@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-06 12:01:28
- * @LastEditTime: 2020-07-28 11:56:51
+ * @LastEditTime: 2020-07-29 14:37:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-backstage\src\components\users\users.vue
@@ -177,10 +177,12 @@ export default {
     // pagenum  当前页码     不能为空
     // pagesize 每页显示条数  不能为空
     async getUserList() {
-      const AUTH_TOKEN = localStorage.getItem('token')
-      this.$http.defaults.headers.common['Authorization'] = AUTH_TOKEN
+      // 设置请求头    
+      // ps: 改为在http.js中使用拦截器设置 
+      // const AUTH_TOKEN = localStorage.getItem('token')
+      // this.$http.defaults.headers.common['Authorization'] = AUTH_TOKEN
+      
       const res = await this.$http.get(`users?query=${this.query}&pagenum=${this.pagenum}&pagesize=${this.pagesize}`)
-
       const {
         data: {
           users,

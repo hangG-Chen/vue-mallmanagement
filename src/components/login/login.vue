@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-24 19:27:36
- * @LastEditTime: 2020-07-09 13:28:11
+ * @LastEditTime: 2020-07-29 14:36:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-backstage\src\components\login\login.vue
@@ -38,7 +38,6 @@ export default {
     async handleLogin() {
       // es7 async await
       const res = await this.$http.post("login", this.formdata)
-      console.log(res);
       const {
         data,
         meta: {
